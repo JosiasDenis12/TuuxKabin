@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ExplorarCenotesActivity">
+
+    <!-- Imagen de fondo del encabezado -->
+    <ImageView
+        android:id="@+id/headerImage"
+        android:layout_width="match_parent"
+        android:layout_height="231dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/cenote_background"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Overlay oscuro -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="232dp"
+        android:background="#80000000"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!-- Título principal centrado -->
+    <TextView
+        android:id="@+id/headerTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36sp"
+        android:text="Explorar Cenotes"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/headerImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Subtítulo centrado -->
+    <TextView
+        android:id="@+id/headerSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/descubre_experiencias_nicas_en_valladolid"
+        android:textColor="#E0E0E0"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/headerTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Barra de búsqueda mejorada -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewSearch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toBottomOf="@id/headerSubtitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#E6FFFFFF"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_search"/>
+
+            <EditText
+                android:id="@+id/searchBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:background="@null"
+                android:fontFamily="sans-serif"
+                android:hint="Buscar cenote o ubicación"
+                android:inputType="text"
+                android:textColor="#000000"
+                android:textColorHint="#9E9E9E"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Contenido principal (ScrollView para cenotes) -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="70dp"
+        app:layout_constraintTop_toBottomOf="@id/cardViewSearch"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Sección Cenotes Cercanos -->
+            <TextView
+                android:id="@+id/tvCenotesCercanos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Cenotes Cercanos"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp">
+
+                    <!-- Cenote Xkeken -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardCenoteXkeken"
+                        android:layout_width="260dp"
+                        android:layout_height="160dp"
+                        android:layout_marginEnd="12dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/cenote_xkeken" />
+
+                            <ImageView
+                                android:id="@+id/favXkeken"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="top|end"
+                                android:padding="6dp"
+                                android:layout_margin="8dp"
+                                android:background="@drawable/circle_background"
+                                android:src="@android:drawable/btn_star" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="12dp"
+                                android:background="@drawable/gradient_background">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Cenote Xkekén"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="A 5 km del centro de Valladolid"
+                                    android:textColor="#E0E0E0"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </FrameLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Cenote Saamal -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardCenoteSaamal"
+                        android:layout_width="260dp"
+                        android:layout_height="160dp"
+                        android:layout_marginEnd="12dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/cenote_saamal" />
+
+                            <ImageView
+                                android:id="@+id/favSaamal"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="top|end"
+                                android:padding="6dp"
+                                android:layout_margin="8dp"
+                                android:background="@drawable/circle_background"
+                                android:src="@android:drawable/btn_star" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="12dp"
+                                android:background="@drawable/gradient_background">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Cenote Saamal"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Hacienda Selva Maya, 7 km de Valladolid"
+                                    android:textColor="#E0E0E0"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </FrameLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Cenote Xlakaj -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardCenoteXlakaj"
+                        android:layout_width="260dp"
+                        android:layout_height="160dp"
+                        android:layout_marginEnd="12dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/cenote_xlakaj" />
+
+                            <ImageView
+                                android:id="@+id/favXlakaj"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="top|end"
+                                android:padding="6dp"
+                                android:layout_margin="8dp"
+                                android:background="@drawable/circle_background"
+                                android:src="@android:drawable/btn_star" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="12dp"
+                                android:background="@drawable/gradient_background">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Cenote Xlakaj"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Dzitas, a 12 km de Valladolid"
+                                    android:textColor="#E0E0E0"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </FrameLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Cenote Samula -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardCenoteSamula"
+                        android:layout_width="260dp"
+                        android:layout_height="160dp"
+                        android:layout_marginEnd="12dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/cenote_samula" />
+
+                            <ImageView
+                                android:id="@+id/favSamula"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="top|end"
+                                android:padding="6dp"
+                                android:layout_margin="8dp"
+                                android:background="@drawable/circle_background"
+                                android:src="@android:drawable/btn_star" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="12dp"
+                                android:background="@drawable/gradient_background">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Cenote Samula"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="A 5 km del centro de Valladolid"
+                                    android:textColor="#E0E0E0"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </FrameLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Sección Cenotes Populares -->
+            <TextView
+                android:id="@+id/tvCenotesPopulares"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="Cenotes Populares"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp">
+
+                    <!-- Cenote Zaci -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardCenoteZaci"
+                        android:layout_width="260dp"
+                        android:layout_height="160dp"
+                        android:layout_marginEnd="12dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/cenote_zaci" />
+
+                            <ImageView
+                                android:id="@+id/favZaci"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="top|end"
+                                android:padding="6dp"
+                                android:layout_margin="8dp"
+                                android:background="@drawable/circle_background"
+                                android:src="@android:drawable/btn_star" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="12dp"
+                                android:background="@drawable/gradient_background">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/cenote_zaci"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Centro de Valladolid"
+                                    android:textColor="#E0E0E0"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </FrameLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Cenote Xuxha -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardCenoteXuxha"
+                        android:layout_width="260dp"
+                        android:layout_height="160dp"
+                        android:layout_marginEnd="12dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/cenote_xuxha" />
+
+                            <ImageView
+                                android:id="@+id/favXuxha"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="top|end"
+                                android:padding="6dp"
+                                android:layout_margin="8dp"
+                                android:background="@drawable/circle_background"
+                                android:src="@android:drawable/btn_star" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="12dp"
+                                android:background="@drawable/gradient_background">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Cenote X'ux Ha"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Hacienda San Lorenzo, 15 km de Valladolid"
+                                    android:textColor="#E0E0E0"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </FrameLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Cenote Chukum -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardCenoteChukum"
+                        android:layout_width="260dp"
+                        android:layout_height="160dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/cenote_chukum" />
+
+                            <ImageView
+                                android:id="@+id/favChukum"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="top|end"
+                                android:padding="6dp"
+                                android:layout_margin="8dp"
+                                android:background="@drawable/circle_background"
+                                android:src="@android:drawable/btn_star" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="12dp"
+                                android:background="@drawable/gradient_background">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Cenote Chukum"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="A 20 km de Valladolid"
+                                    android:textColor="#E0E0E0"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </FrameLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Sección Recomendados -->
+            <TextView
+                android:id="@+id/tvRecomendados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="Recomendados"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="16dp">
+
+                    <!-- Cenote Suytun -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardCenoteSuytun"
+                        android:layout_width="260dp"
+                        android:layout_height="160dp"
+                        android:layout_marginEnd="12dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/cenote_suytun" />
+
+                            <ImageView
+                                android:id="@+id/favSuytun"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="top|end"
+                                android:padding="6dp"
+                                android:layout_margin="8dp"
+                                android:background="@drawable/circle_background"
+                                android:src="@android:drawable/btn_star" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="12dp"
+                                android:background="@drawable/gradient_background">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Cenote Suytun"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="A 8 km de Valladolid, carretera a Cancún"
+                                    android:textColor="#E0E0E0"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </FrameLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Cenote Oxman -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardCenoteOxman"
+                        android:layout_width="260dp"
+                        android:layout_height="160dp"
+                        android:layout_marginEnd="12dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/cenote_oxman" />
+
+                            <ImageView
+                                android:id="@+id/favOxman"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="top|end"
+                                android:padding="6dp"
+                                android:layout_margin="8dp"
+                                android:background="@drawable/circle_background"
+                                android:src="@android:drawable/btn_star" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="12dp"
+                                android:background="@drawable/gradient_background">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Hacienda Cenote Oxmán"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Hacienda San Lorenzo Oxman, Valladolid"
+                                    android:textColor="#E0E0E0"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </FrameLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Cenote Noolha -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardCenoteNoolha"
+                        android:layout_width="260dp"
+                        android:layout_height="160dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="2dp">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/cenote_noolha" />
+
+                            <ImageView
+                                android:id="@+id/favNoolha"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="top|end"
+                                android:padding="6dp"
+                                android:layout_margin="8dp"
+                                android:background="@drawable/circle_background"
+                                android:src="@android:drawable/btn_star" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="12dp"
+                                android:background="@drawable/gradient_background">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Cenote Noolha by Chichikan"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Chichikan, cerca de Valladolid"
+                                    android:textColor="#E0E0E0"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </FrameLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Barra de navegación inferior -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@android:color/white"
+        app:elevation="8dp"
+        app:itemIconTint="@color/bottom_nav_color_selector"
+        app:itemTextColor="@color/bottom_nav_color_selector"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav_menu"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

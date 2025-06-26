@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="pressButton" type="id" />
+    <item name="tvWelcome" type="id" />
+    <item name="searchBarContainer" type="id" />
+    <item name="searchBar" type="id" />
+    <item name="loginOptionsContainer" type="id" />
+    <item name="btnRegistro" type="id" />
+    <item name="btnGoogle" type="id" />
+    <item name="btnFacebook" type="id" />
+    <item name="profileCard" type="id" />
+    <item name="llMainNav" type="id" />
+    <item name="btnExplorarCenotes" type="id" />
+    <item name="iconExplorar" type="id" />
+    <item name="btnReservarTransporte" type="id" />
+    <item name="iconTransporte" type="id" />
+    <item name="btnExperiencias" type="id" />
+    <item name="iconExperiencias" type="id" />
+    <item name="tvCenotesTitle" type="id" />
+    <item name="horizontalScrollCenotes" type="id" />
+    <item name="cardCenoteZaci" type="id" />
+    <item name="tvCenoteTitleZaci" type="id" />
+    <item name="imgCenoteZaci" type="id" />
+    <item name="tvCenoteStatusZaci" type="id" />
+    <item name="cardCenoteXkeken" type="id" />
+    <item name="imgCenoteXkeken" type="id" />
+    <item name="tvCenoteStatusXkeken" type="id" />
+    <item name="tvCenoteTitleXkeken" type="id" />
+    <item name="bottomNavigation" type="id" />
+</resources>
